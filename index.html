@@ -31,6 +31,46 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
 <style>
+	#section-countdown{
+    font-family: 'Titillium Web', cursive;
+  width: 100%;
+  height:40%;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  background:black;
+  font-weight: 100;
+}
+
+#section-countdown div {
+  display: inline-block;
+  line-height: 1;
+  padding: 3px;
+  font-size: 40px;
+}
+
+#section-countdown span {
+  display: block;
+  font-size: 20px;
+  color: white;
+}
+
+#section-countdown #days {
+  font-size: 100px;
+  color: #db4844;
+}
+#section-countdown #hours {
+  font-size: 80px;
+  color: #f07c22;
+}
+#section-countdown #minutes {
+  font-size: 60px;
+  color: #f6da74;
+}
+#section-countdown #seconds {
+  font-size: 40px;
+  color: #abcd58;
+}
 #timeline ul {
   padding: 50x 0;
   background: var(--primary-color);
@@ -211,7 +251,7 @@
 
 						<div class="wrap-btn-slide1 animated visible-false" data-appear="zoomIn">
 							<!-- Button1 -->
-							<a href="/#aboutus" class="btn1 flex-c-m size1 txt3 trans-0-4">
+							<a href="/team" class="btn1 flex-c-m size1 txt3 trans-0-4">
 								Veiw more
 							</a>
 						</div>
@@ -261,7 +301,24 @@
 			<!-- <div class="wrap-slick1-dots"></div> -->
 		</div>
 	</section>
+	<section id="section-countdown">
+		<!-- - -->
+		<div class="container">
+		<div class="title-event t-center m-b-52">
+				<span class="tit2 p-l-15 p-r-15" style="    color: #ae1d1d;
+				font-size: 36px;">
+						OUR EVENT STARTS IN:
+				</span>
+				</div>
 
+		</div>
+	<div id="timer">
+		<div id="days"></div>
+		<div id="hours"></div>
+		<div id="minutes"></div>
+		<div id="seconds"></div>
+	</div>
+	</section>
 	<!-- Welcome -->
 	<section class="section-welcome bg1-pattern p-t-120 p-b-105" style="background-color: black !important;" id="aboutus">
 		<div class="container">
@@ -697,11 +754,13 @@ To solve problems with innovative ideas and create new solutions and work on the
 								<!-- Text block2 -->
 								<div class="wrap-text-blo2 flex-col-c-m p-l-40 p-r-40 p-t-45 p-b-30">
 									<h4 class="tit7 t-center m-b-10">
-										Our Event Starts In :
+										Pawan kumar's Workshop
 									</h4>
+									<p class="t-center" style="color:black!important">
+											Google Developer Expert for Flutter. Passionate #Flutter, #Android Developer. #Entrepreneur #YouTuber
+										</p>
 
-
-									<div class="flex-sa-m flex-w w-full m-t-40">
+									<!-- <div class="flex-sa-m flex-w w-full m-t-40">
 										<div class="size11 flex-col-c-m">
 											<span class="dis-block t-center txt7 m-b-2 days">
 												3
@@ -740,13 +799,14 @@ To solve problems with innovative ideas and create new solutions and work on the
 											<span class="dis-block t-center txt8">
 												Seconds
 											</span>
-										</div>
-									</div>
+										</div> -->
+								
 
-									<a href="/#timeline" class="txt4 m-t-40">
+									<a href="/#timeline" class="txt4 m-t-40" style="color:tomato">
 										Event Schedule
 										<i class="fa fa-long-arrow-right m-l-10" aria-hidden="true"></i>
 									</a>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -1138,6 +1198,36 @@ function checkEmptyString(val) {
     return (val == undefined || val == null || val.trim().length == 0);
 }
 </script>
+
+<script>
+        function makeTimer() {
+
+            //		var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
+            var endTime = new Date("29 April 2020 9:56:00 GMT+01:00");
+            endTime = (Date.parse(endTime) / 1000);
+
+            var now = new Date();
+            now = (Date.parse(now) / 1000);
+
+            var timeLeft = endTime - now;
+
+            var days = Math.floor(timeLeft / 86400);
+            var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+            var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+            var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+
+            if (hours < "10") { hours = "0" + hours; }
+            if (minutes < "10") { minutes = "0" + minutes; }
+            if (seconds < "10") { seconds = "0" + seconds; }
+
+            $("#days").html(days + "<span>Days</span>");
+            $("#hours").html(hours + "<span>Hours</span>");
+            $("#minutes").html(minutes + "<span>Minutes</span>");
+            $("#seconds").html(seconds + "<span>Seconds</span>");
+
+        }
+
+        setInterval(function () { makeTimer(); }, 1000);</script>
 
 	<script>const items = document.querySelectorAll('#timeline li');
 

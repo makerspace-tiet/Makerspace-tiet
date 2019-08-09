@@ -23,7 +23,7 @@ MongoClient.connect(url, (err, database) => {
         return console.log(err);
     }
     db = database;
-    app.listen(process.event.port||8080, () => {
+    app.listen(process.env.port||8080, () => {
         console.log('listening to 8080');
     })
 });
